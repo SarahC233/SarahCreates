@@ -1,6 +1,6 @@
 {
+  "apiEndpoint": "https://sarahs-portfolio.prismic.io/api/v2",
   "repositoryName": "sarahs-portfolio",
   "adapter": "@slicemachine/adapter-next",
-  "libraries": ["./src/slices"],
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+  "libraries": ["./src/slices"]
 }

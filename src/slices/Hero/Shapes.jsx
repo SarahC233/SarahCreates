@@ -40,7 +40,7 @@ function Geometries() {
       geometry: new THREE.IcosahedronGeometry(3), // Gem
     },
     {
-      position: [1, 0.75, 4],
+      position: [0.8, -0.75, 5],
       r: 0.4,
       geometry: new THREE.CapsuleGeometry(0.5, 1.6, 2, 16), // Pill
     },
@@ -79,10 +79,19 @@ function Geometries() {
     }),
   ];
 
+  // sound effects
+
+  const soundEffects = [
+    new Audio("/sounds/knock1.ogg"),
+    new Audio("/sounds/knock2.ogg"),
+    new Audio("/sounds/knock3.ogg"),
+  ]
+
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
       key={JSON.stringify(position)}
       position={position.map((p) => p * 2)}
+      soundEffects={soundEffects}
       geometry={geometry}
       materials={materials}
       r={r}
@@ -90,7 +99,7 @@ function Geometries() {
   ));
 }
 
-function Geometry({ r, position, geometry, materials }) {
+function Geometry({ r, position, geometry, materials, soundEffects }) {  
   const meshRef = useRef();
   const [visible, setVisible] = useState(false);
 
@@ -102,6 +111,9 @@ function Geometry({ r, position, geometry, materials }) {
 
   function handleClick(e) {
     const mesh = e.object;
+
+gsap.utils.random(soundEffects).play();
+
     gsap.to(mesh.rotation, {
       x: `+=${gsap.utils.random(0, 2)}`,
       y: `+=${gsap.utils.random(0, 2)}`,
