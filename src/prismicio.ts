@@ -13,16 +13,19 @@ export const repositoryName =
  *
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
-// TODO: Update the routes array to match your project's route structure.
 const routes: prismic.ClientConfig["routes"] = [
-  // Examples:
   {
-  	type: "homepage",
-  	path: "/",
+    type: "homepage",
+    path: "/",
   },
   {
-  	type: "page",
-  	path: "/:uid",
+    type: "page",
+    uid: "about", // Specific route for the "About" page
+    path: "/about",
+  },
+  {
+    type: "page",
+    path: "/:uid", // Dynamic path for other pages using UID - not sure if these actually work, about page did not 
   },
 ];
 
@@ -34,7 +37,7 @@ const routes: prismic.ClientConfig["routes"] = [
  */
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(repositoryName, {
-    routes,
+    routes, // Pass the routes configuration here
     fetchOptions:
       process.env.NODE_ENV === "production"
         ? { next: { tags: ["prismic"] }, cache: "force-cache" }
@@ -42,6 +45,7 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     ...config,
   });
 
+  // Enable auto previews
   prismicNext.enableAutoPreviews({
     client,
     previewData: config.previewData,

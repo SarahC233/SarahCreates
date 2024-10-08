@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography"; // ES module import
 
 const config: Config = {
   content: [
@@ -8,8 +9,9 @@ const config: Config = {
     "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    
+    // Add custom themes here if needed
   },
-  plugins: [],
+  plugins: [typography], // Use the imported typography plugin
 };
+
 export default config;
