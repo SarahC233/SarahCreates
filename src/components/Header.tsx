@@ -1,6 +1,7 @@
 import React from "react";
 import { createClient } from "@prismicio/client";
 import Link from "next/link";
+import { PrismicNextLink } from "@prismicio/next";
 
 export default async function Header() {
     const endpoint = process.env.NEXT_PUBLIC_PRISMIC_API_ENDPOINT;
@@ -20,9 +21,14 @@ export default async function Header() {
 {settings.data.name}
 </Link>
                     </li>
-                    <li>
+                    {settings.data.nav_item.map(({link, label}, index) =>(
+                        <li key={index}>
+                            <PrismicNextLink field={link}>
+                                {label}
+                            </PrismicNextLink>
+                        </li>
 
-                    </li>
+                    ) )}
                 </ul>
             </nav>
 
