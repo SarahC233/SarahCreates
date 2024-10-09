@@ -19,7 +19,7 @@
             "placeholder": ""
           }
         },
-        "tech_colour": {
+        "tech_list": {
           "type": "Group",
           "config": {
             "label": "Tech List",

@@ -8,7 +8,7 @@
 				"value": "ruler",
 				"type": "Text"
 			},
-			"tech_colour": {
+			"tech_list": {
 				"__TYPE__": "GroupContentType",
 				"value": [
 					{
@@ -18,7 +18,7 @@
 								"tech_colour",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "#e0bdaf",
+									"value": "#2af936",
 									"type": "Color"
 								}
 							],
@@ -26,7 +26,7 @@
 								"tech_name",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "brave",
+									"value": "might",
 									"type": "Text"
 								}
 							]

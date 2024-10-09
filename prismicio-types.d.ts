@@ -428,13 +428,13 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 /**
  * Item in *TechList → Default → Primary → Tech List*
  */
-export interface TechListSliceDefaultPrimaryTechColourItem {
+export interface TechListSliceDefaultPrimaryTechListItem {
   /**
    * Tech Colour field in *TechList → Default → Primary → Tech List*
    *
    * - **Field Type**: Color
    * - **Placeholder**: *None*
-   * - **API ID Path**: tech_list.default.primary.tech_colour[].tech_colour
+   * - **API ID Path**: tech_list.default.primary.tech_list[].tech_colour
    * - **Documentation**: https://prismic.io/docs/field#color
    */
   tech_colour: prismic.ColorField;
@@ -444,7 +444,7 @@ export interface TechListSliceDefaultPrimaryTechColourItem {
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: tech_list.default.primary.tech_colour[].tech_name
+   * - **API ID Path**: tech_list.default.primary.tech_list[].tech_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tech_name: prismic.KeyTextField;
@@ -469,11 +469,11 @@ export interface TechListSliceDefaultPrimary {
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: tech_list.default.primary.tech_colour[]
+   * - **API ID Path**: tech_list.default.primary.tech_list[]
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  tech_colour: prismic.GroupField<
-    Simplify<TechListSliceDefaultPrimaryTechColourItem>
+  tech_list: prismic.GroupField<
+    Simplify<TechListSliceDefaultPrimaryTechListItem>
   >;
 }
 
@@ -547,7 +547,7 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       TechListSlice,
-      TechListSliceDefaultPrimaryTechColourItem,
+      TechListSliceDefaultPrimaryTechListItem,
       TechListSliceDefaultPrimary,
       TechListSliceVariation,
       TechListSliceDefault,
