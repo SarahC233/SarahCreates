@@ -24,7 +24,9 @@ export default function RootLayout({
      
       <body className={`${urbanist.className} antialiased`}>
       <Header />
-        {children}</body>
+        {children}
+        <div className="h-[500vh]"></div>
+        </body>
     </html>
   );
 }
