@@ -111,11 +111,13 @@ export default function ContentList({
     setCurrentItem(null);
   };
 
+  // Use hover_image for hover effects
   const contentImages = items.map((item) => {
-    const image = isFilled.image(item.data.image)
-      ? item.data.image
+    const hoverImage = isFilled.image(item.data?.hover_image)
+      ? item.data.hover_image
       : fallbackItemImage;
-    return asImageSrc(image, {
+
+    return asImageSrc(hoverImage, {
       fit: "crop",
       w: 220,
       h: 320,
