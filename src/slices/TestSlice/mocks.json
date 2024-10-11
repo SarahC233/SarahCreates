@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"testing": {
+				"__TYPE__": "FieldContent",
+				"value": "melted",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
