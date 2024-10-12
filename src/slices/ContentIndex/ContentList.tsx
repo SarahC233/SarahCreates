@@ -141,6 +141,7 @@ export default function ContentList({
         className="grid border-b border-b-slate-100"
         onMouseLeave={onMouseLeave}
       >
+        {/* Change items to an array of ...items, ...items, etc for duplicated entries - then also in content images */}
         {items.map((post, index) => (
           <li
             key={index}
