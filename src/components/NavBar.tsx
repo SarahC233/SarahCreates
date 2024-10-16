@@ -43,6 +43,7 @@ export default function NavBar({
             className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
             onClick={() => setOpen(false)}
           >
+            
             <MdClose />
           </button>
           {settings.data.nav_item.map(({ link, label }, index) => (
