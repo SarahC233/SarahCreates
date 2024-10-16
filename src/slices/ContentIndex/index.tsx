@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
@@ -18,16 +19,13 @@ const ContentIndex = async ({ slice }: ContentIndexProps): Promise<JSX.Element> 
   const blogPosts = await client.getAllByType("blog_post");
   const projects = await client.getAllByType("project");
 
-  const contentType = slice.primary.content_type || "Blog";
+  const contentType = slice.primary.content_type ?? "Blog"; // Handle nullish value
   const items = contentType === "Blog" ? blogPosts : projects;
 
   return (
-    <Bounded
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
+    <Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       <Heading size="xl" className="mb-8">
-        {slice.primary.heading}
+        {slice.primary.heading ?? "Untitled"} {/* Handle potential null heading */}
       </Heading>
 
       {/* Render description if available */}
@@ -37,26 +35,36 @@ const ContentIndex = async ({ slice }: ContentIndexProps): Promise<JSX.Element> 
         </div>
       )}
 
-      {/* Conditional Rendering: Only render the content list for projects */}
+      {/* Display an image for Blogs */}
+      {contentType === "Blog" && (
+        <div className="relative w-full max-w-3xl mx-auto mb-10">
+          <Image
+            src="/watch.jpg" // Using the image from /public
+            alt="Blog Placeholder Image"
+            layout="responsive" // Use responsive layout for better fitting
+            width={800} // Set a reasonable width
+            height={450} // Maintain the correct aspect ratio
+            className="rounded-lg"
+          />
+        </div>
+      )}
+
+      {/* Render the content list only for projects */}
       {contentType === "Project" && (
         <ContentList
           items={items}
           contentType={contentType}
-          viewMoreText={slice.primary.view_more_text}
+          viewMoreText={slice.primary.view_more_text ?? "View More"} // Handle null value
           fallbackItemImage={slice.primary.fallback_item_image}
         />
-      )}
-
-      {/* For Blogs: If no list, render nothing further */}
-      {contentType === "Blog" && (
-        <div className="text-center text-gray-400 mt-10">
-          {/* Optional: You could add more content or keep this empty */}
-        </div>
       )}
     </Bounded>
   );
 };
 
 export default ContentIndex;
+
+
+
 
 
