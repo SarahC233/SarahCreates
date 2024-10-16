@@ -150,13 +150,15 @@ function DesktopMenu({
           )}
         </React.Fragment>
       ))}
-      <li>
+     
+      {/* Remove contact out to restore contact button in nav bar
+       <li>
         <Button
           linkField={settings.data.cta_link}
           label={settings.data.cta_label}
           className="ml-3"
         />
-      </li>
+      </li> */}
     </div>
   );
 }
