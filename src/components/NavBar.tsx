@@ -151,7 +151,7 @@ function DesktopMenu({
         </React.Fragment>
       ))}
      
-      {/* Remove contact out to restore contact button in nav bar
+      {/* Remove comment out to restore contact button in nav bar
        <li>
         <Button
           linkField={settings.data.cta_link}
