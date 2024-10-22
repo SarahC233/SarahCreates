@@ -121,7 +121,7 @@ export default function ContentList({
           >
             <div className="flex flex-col">
               <span className="text-3xl font-bold">{post.data.title}</span>
-              <div className="flex gap-3 text-yellow-400">
+              <div className="flex gap-3 text-accent">
                 {post.tags.map((tag, idx) => (
                   <span key={idx} className="text-lg font-bold">
                     {tag}

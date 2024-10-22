@@ -9,9 +9,14 @@ const config: Config = {
     "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    // Add custom themes here if needed
+    extend: {
+      colors: {
+        accent: '#E4B1F0', // Define the custom accent color here
+      },
+    },
   },
   plugins: [typography], // Use the imported typography plugin
 };
 
 export default config;
+
