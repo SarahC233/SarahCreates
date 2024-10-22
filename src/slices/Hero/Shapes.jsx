@@ -19,7 +19,7 @@ export default function Shapes() {
         <Suspense fallback={null}>
           <Geometries />
           <ContactShadows
-            position={[0, -3.5, 0]}
+            position={[0, -4.5, 0]}
             opacity={0.65}
             scale={40}
             blur={1}
