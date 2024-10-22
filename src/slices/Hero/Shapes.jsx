@@ -152,7 +152,7 @@ gsap.utils.random(soundEffects).play();
   useEffect(() => {
     if (meshRef.current) {
       gsap.to(meshRef.current.rotation, {
-        duration: 10,
+        duration: 20,
         x: Math.PI * 2,
         y: Math.PI * 2,
         z: Math.PI * 2,
@@ -164,7 +164,9 @@ gsap.utils.random(soundEffects).play();
 
   return (
     <group position={position} ref={meshRef}>
-      <Float speed={2 * r} rotationIntensity={2 * r} floatIntensity={2 * r}>
+<Float speed={r} rotationIntensity={r} floatIntensity={r}>
+
+
         <mesh
           geometry={geometry}
           onClick={handleClick}
