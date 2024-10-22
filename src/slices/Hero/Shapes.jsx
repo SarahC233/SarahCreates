@@ -164,7 +164,7 @@ gsap.utils.random(soundEffects).play();
 
   return (
     <group position={position} ref={meshRef}>
-      <Float speed={5 * r} rotationIntensity={6 * r} floatIntensity={5 * r}>
+      <Float speed={2 * r} rotationIntensity={2 * r} floatIntensity={2 * r}>
         <mesh
           geometry={geometry}
           onClick={handleClick}
