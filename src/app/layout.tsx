@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
-
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
@@ -17,9 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: settings.data.meta_title,
     description: settings.data.meta_description,
-    // openGraph: {
-    //   images: [settings.data.og_image?.url || ""],
-    // },
   };
 }
 
@@ -33,7 +29,7 @@ export default function RootLayout({
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
         {children}
-      
+
         <Footer />
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
