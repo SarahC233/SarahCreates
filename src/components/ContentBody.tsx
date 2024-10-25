@@ -31,13 +31,12 @@ export default function ContentBody({
       {/* Wrap both the heading section and SliceZone in the styled div */}
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20 text-accent text-xl font-bold">
         <Heading as="h1">{page.data.title}</Heading>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4 mt-4">
           {page.tags.map((tag, index) => (
             <span key={index}>{tag}</span>
           ))}
         </div>
 
-        {/* Add the slate-400 class to the date */}
         <p className="mt-8 border-b border-slate-600 text-xl font-medium text-slate-300">
           {formatDate(page.data.date)}
         </p>

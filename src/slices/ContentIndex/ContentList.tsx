@@ -26,7 +26,10 @@ export default function ContentList({
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
   const revealRef = useRef<HTMLDivElement>(null);
 
-  const [hoverState, setHoverState] = useState<{ hovering: boolean; itemIndex: number | null }>({
+  const [hoverState, setHoverState] = useState<{
+    hovering: boolean;
+    itemIndex: number | null;
+  }>({
     hovering: false,
     itemIndex: null,
   });
@@ -88,7 +91,9 @@ export default function ContentList({
 
   const contentImages = items.map((item) =>
     asImageSrc(
-      isFilled.image(item.data.hover_image) ? item.data.hover_image : fallbackItemImage,
+      isFilled.image(item.data.hover_image)
+        ? item.data.hover_image
+        : fallbackItemImage,
       { fit: "crop", w: 220, h: 320, exp: -10 }
     )
   );
@@ -111,7 +116,9 @@ export default function ContentList({
           ref={(el) => {
             if (el) itemsRef.current[index] = el;
           }}
-          onMouseEnter={() => setHoverState({ hovering: true, itemIndex: index })}
+          onMouseEnter={() =>
+            setHoverState({ hovering: true, itemIndex: index })
+          }
           className="list-item opacity-0"
         >
           <a
@@ -139,7 +146,9 @@ export default function ContentList({
         className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
         style={{
           backgroundImage:
-            hoverState.itemIndex !== null ? `url(${contentImages[hoverState.itemIndex]})` : "",
+            hoverState.itemIndex !== null
+              ? `url(${contentImages[hoverState.itemIndex]})`
+              : "",
         }}
         ref={revealRef}
       ></div>
