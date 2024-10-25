@@ -61,25 +61,14 @@ function Geometries() {
     // },
   ];
 
-  const materials = [new THREE.MeshNormalMaterial(),
-    new THREE.MeshStandardMaterial({ color: 0x2ecc71, roughness: 0 }), //add the desired hex values after 0x
-    new THREE.MeshStandardMaterial({ color: 0xf1c40f, roughness: 0.4 }),
-    new THREE.MeshStandardMaterial({ color: 0xe74c3c, roughness: 0.1 }),
-    new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1 }),
-    new THREE.MeshStandardMaterial({ color: 0x1abc9c, roughness: 0.1 }),
-    new THREE.MeshStandardMaterial({
-      roughness: 0,
-      metalness: 0.5, //try metalness at 1 for cool look too
-      color: 0x2980b9,
-    }),
-    new THREE.MeshStandardMaterial({
-      roughness: 0.1,
-      metalness: 0.5,
-      color: 0x2c3e50,
-    }),
+  const materials = [
+    new THREE.MeshNormalMaterial(), // Multicolored 
+    new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.1, metalness: 0.5 }), // Dark Blue-Gray 
+    new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1, metalness: 0.5 }), // Purple 
   ];
+  
 
-  // sound effects
+  // Sound effects
 
   const soundEffects = [
     new Audio("/sounds/knock1.ogg"),
