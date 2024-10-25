@@ -39,26 +39,6 @@ function Geometries() {
       r: 0.3,
       geometry: new THREE.IcosahedronGeometry(4), // Gem
     },
-    // {
-    //   position: [0.8, -0.75, 5],
-    //   r: 0.4,
-    //   geometry: new THREE.CapsuleGeometry(0.5, 1.6, 2, 16), // Pill
-    // },
-    // {
-    //   position: [-1.4, 2, -4],
-    //   r: 0.3,
-    //   geometry: new THREE.DodecahedronGeometry(1.5), // Football
-    // },
-    // {
-    //   position: [-0.8, -0.75, 5],
-    //   r: 0.5,
-    //   geometry: new THREE.TorusGeometry(0.6, 0.25, 16, 32), // Donut
-    // },
-    // {
-    //   position: [1.6, 1.6, -4],
-    //   r: 0.7,
-    //   geometry: new THREE.OctahedronGeometry(3), // Diamond
-    // },
   ];
 
   const materials = [
@@ -79,18 +59,17 @@ function Geometries() {
   ];
 
   // Sound effects
-
-  const soundEffects = [
-    new Audio("/sounds/knock1.ogg"),
-    new Audio("/sounds/knock2.ogg"),
-    new Audio("/sounds/knock3.ogg"),
-  ];
+  // const soundEffects = [
+  //   new Audio("/sounds/knock1.ogg"),
+  //   new Audio("/sounds/knock2.ogg"),
+  //   new Audio("/sounds/knock3.ogg"),
+  // ];
 
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
       key={JSON.stringify(position)}
       position={position.map((p) => p * 2)}
-      soundEffects={soundEffects}
+      // soundEffects={soundEffects}
       geometry={geometry}
       materials={materials}
       r={r}
@@ -98,7 +77,7 @@ function Geometries() {
   ));
 }
 
-function Geometry({ r, position, geometry, materials, soundEffects }) {
+function Geometry({ r, position, geometry, materials }) {  // Add soundEffects back in 
   const meshRef = useRef();
   const [visible, setVisible] = useState(false);
   const [currentMaterial, setCurrentMaterial] = useState(() => getRandomMaterial());
@@ -110,7 +89,8 @@ function Geometry({ r, position, geometry, materials, soundEffects }) {
   function handleClick(e) {
     const mesh = e.object;
 
-    gsap.utils.random(soundEffects).play();
+    // Sounds effects disabled for now
+    // gsap.utils.random(soundEffects).play();
 
     // Perform the rotation animation
     gsap.to(mesh.rotation, {
