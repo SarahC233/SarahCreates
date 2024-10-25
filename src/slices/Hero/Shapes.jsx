@@ -62,11 +62,21 @@ function Geometries() {
   ];
 
   const materials = [
-    new THREE.MeshNormalMaterial(), // Multicolored 
-    new THREE.MeshStandardMaterial({ color: 0x2c3e50, roughness: 0.1, metalness: 0.5 }), // Dark Blue-Gray 
-    new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1, metalness: 0.5 }), // Purple 
+    new THREE.MeshNormalMaterial({
+      roughness: 0.1,
+      metalness: 0.5,
+    }), // Multicolored
+    new THREE.MeshStandardMaterial({
+      color: 0x2c3e50,
+      roughness: 0.1,
+      metalness: 0.5,
+    }), // Dark Blue-Gray
+    new THREE.MeshStandardMaterial({
+      color: 0x8e44ad,
+      roughness: 0.1,
+      metalness: 0.5,
+    }), // Purple
   ];
-  
 
   // Sound effects
 
@@ -74,7 +84,7 @@ function Geometries() {
     new Audio("/sounds/knock1.ogg"),
     new Audio("/sounds/knock2.ogg"),
     new Audio("/sounds/knock3.ogg"),
-  ]
+  ];
 
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
@@ -88,11 +98,10 @@ function Geometries() {
   ));
 }
 
-function Geometry({ r, position, geometry, materials, soundEffects }) {  
+function Geometry({ r, position, geometry, materials, soundEffects }) {
   const meshRef = useRef();
   const [visible, setVisible] = useState(false);
-
-  const startingMaterial = getRandomMaterial();
+  const [currentMaterial, setCurrentMaterial] = useState(() => getRandomMaterial());
 
   function getRandomMaterial() {
     return gsap.utils.random(materials);
@@ -101,18 +110,27 @@ function Geometry({ r, position, geometry, materials, soundEffects }) {
   function handleClick(e) {
     const mesh = e.object;
 
-gsap.utils.random(soundEffects).play();
+    gsap.utils.random(soundEffects).play();
 
+    // Perform the rotation animation
     gsap.to(mesh.rotation, {
-      x: `+=${gsap.utils.random(0, 2)}`,
-      y: `+=${gsap.utils.random(0, 2)}`,
-      z: `+=${gsap.utils.random(0, 2)}`,
-      duration: 1.3,
+      x: `+=${gsap.utils.random(0, 1)}`,
+      y: `+=${gsap.utils.random(0, 1)}`,
+      z: `+=${gsap.utils.random(0, 1)}`,
+      duration: 2.5,
       ease: "elastic.out(1, 0.3)",
       yoyo: true,
     });
 
-    mesh.material = getRandomMaterial();
+    // Ensure material is different from current one
+    let newMaterial;
+    do {
+      newMaterial = getRandomMaterial();
+    } while (newMaterial === currentMaterial);
+
+    // Set new material and update state
+    setCurrentMaterial(newMaterial);
+    mesh.material = newMaterial.clone();
   }
 
   const handlePointerOver = () => {
@@ -132,16 +150,16 @@ gsap.utils.random(soundEffects).play();
         z: 0,
         duration: 1,
         ease: "elastic.out(1, 0.3)",
-        delay:0.3,
+        delay: 0.3,
       });
     });
-    return ()=>ctx.revert(); //cleanup
-  },[]);
+    return () => ctx.revert(); //cleanup
+  }, []);
 
   useEffect(() => {
     if (meshRef.current) {
       gsap.to(meshRef.current.rotation, {
-        duration: 20,
+        duration: 40,
         x: Math.PI * 2,
         y: Math.PI * 2,
         z: Math.PI * 2,
@@ -153,18 +171,17 @@ gsap.utils.random(soundEffects).play();
 
   return (
     <group position={position} ref={meshRef}>
-<Float speed={r} rotationIntensity={r} floatIntensity={r}>
-
-
+      <Float speed={r} rotationIntensity={r} floatIntensity={r}>
         <mesh
           geometry={geometry}
           onClick={handleClick}
           onPointerOver={handlePointerOver}
           onPointerOut={handlePointerOut}
           visible={visible}
-          material={startingMaterial}
+          material={currentMaterial}
         />
       </Float>
     </group>
   );
 }
+
