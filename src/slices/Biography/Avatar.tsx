@@ -13,47 +13,54 @@ export default function Avatar({ image, className }: AvatarProps) {
   const component = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".avatar",
-        { opacity: 0, scale: 1.4 },
-        { scale: 1, opacity: 1, duration: 1.3, ease: "power3.inOut" }
-      );
+    gsap.fromTo(
+      ".avatar",
+      { opacity: 0, scale: 1.4 },
+      { scale: 1, opacity: 1, duration: 1.3, ease: "power3.inOut" }
+    );
 
-      window.onmousemove = (e) => {
-        if (!component.current) return;
-        const componentRect=(component.current as HTMLElement).getBoundingClientRect()
-        const componentCenterX = componentRect.left + componentRect.width / 2
+    window.onmousemove = (e) => {
+      if (!component.current) return;
+      
+      const componentRect = (component.current as HTMLElement).getBoundingClientRect();
+      const componentCenterX = componentRect.left + componentRect.width / 2;
 
-        let componentPrecent = {
-            x: (e.clientX - componentCenterX) / componentRect.width / 2
-        }
-
-        let distFromCenter = 1 - Math.abs(componentPrecent.x)
-
-        gsap.timeline({
-            defaults: {duration: .5, overwrite: "auto", ease: "power3.Out"}
-        }).to(".avatar",
-            {
-                rotation: gsap.utils.clamp(-2, 2, 5*componentPrecent.x),
-                duration: .5
-            }, 0
-        ).to(".highlight",
-            {
-                opacity: distFromCenter - 0.7,
-                x: -10 + 20 & componentPrecent.x,
-                duration: .5
-                
-            },
-            0
-        )
+      const componentPrecent = {
+        x: (e.clientX - componentCenterX) / componentRect.width / 2,
       };
-    }, component);
+
+      const distFromCenter = 1 - Math.abs(componentPrecent.x);
+
+      gsap.timeline({
+        defaults: { duration: 0.5, overwrite: "auto", ease: "power3.Out" },
+      })
+        .to(
+          ".avatar",
+          {
+            rotation: gsap.utils.clamp(-2, 2, 5 * componentPrecent.x),
+            duration: 0.5,
+          },
+          0
+        )
+        .to(
+          ".highlight",
+          {
+            opacity: distFromCenter - 0.7,
+            x: -10 + 20 * componentPrecent.x,
+            duration: 0.5,
+          },
+          0
+        );
+    };
+
+    return () => {
+      window.onmousemove = null; // Cleanup on component unmount
+    };
   }, []);
 
   return (
-    <div ref={component} className={clsx("realtive h-full w-full", className)}>
-      <div className="avatar aspect=square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0">
+    <div ref={component} className={clsx("relative h-full w-full", className)}>
+      <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0">
         <PrismicNextImage
           field={image}
           className="avatar-image h-full w-full object-fill"
