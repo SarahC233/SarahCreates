@@ -20,7 +20,7 @@ export default function ContentBody({
       };
 
       return new Intl.DateTimeFormat("en-GB", dateOptions).format(
-        new Date(date)
+        new Date(date),
       );
     }
     return null; // Return null if the date is not valid
@@ -28,10 +28,9 @@ export default function ContentBody({
 
   return (
     <Bounded as="article">
-      {/* Wrap both the heading section and SliceZone in the styled div */}
-      <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20 text-accent text-xl font-bold">
+      <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 text-xl font-bold text-accent md:px-8 md:py-20">
         <Heading as="h1">{page.data.title}</Heading>
-        <div className="flex flex-wrap gap-4 mt-4">
+        <div className="mt-4 flex flex-wrap gap-4">
           {page.tags.map((tag, index) => (
             <span key={index}>{tag}</span>
           ))}
