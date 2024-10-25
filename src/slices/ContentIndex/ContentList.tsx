@@ -6,6 +6,7 @@ import * as prismicT from "@prismicio/types";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MdArrowOutward } from "react-icons/md";
+import { useCallback } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,29 +66,32 @@ export default function ContentList({
     return () => ctx.revert();
   }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    const mousePos = { x: e.clientX, y: e.clientY + window.scrollY };
-    const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
-    const maxY = window.scrollY + window.innerHeight - 350;
-    const maxX = window.innerWidth - 250;
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const mousePos = { x: e.clientX, y: e.clientY + window.scrollY };
+      const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
+      const maxY = window.scrollY + window.innerHeight - 350;
+      const maxX = window.innerWidth - 250;
 
-    gsap.to(revealRef.current, {
-      x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
-      y: gsap.utils.clamp(0, maxY, mousePos.y - 160),
-      rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1),
-      opacity: hoverState.hovering ? 1 : 0,
-      visibility: "visible",
-      ease: "power3.out",
-      duration: 1.3,
-    });
+      gsap.to(revealRef.current, {
+        x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
+        y: gsap.utils.clamp(0, maxY, mousePos.y - 160),
+        rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1),
+        opacity: hoverState.hovering ? 1 : 0,
+        visibility: "visible",
+        ease: "power3.out",
+        duration: 1.3,
+      });
 
-    lastMousePos.current = mousePos;
-  };
+      lastMousePos.current = mousePos;
+    },
+    [hoverState]
+  );
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [hoverState]);
+  }, [handleMouseMove]);
 
   const contentImages = items.map((item) =>
     asImageSrc(

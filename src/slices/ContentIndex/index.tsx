@@ -39,7 +39,7 @@ const ContentIndex = async ({ slice }: ContentIndexProps): Promise<JSX.Element> 
       {contentType === "Blog" && (
         <div className="relative w-full max-w-3xl mx-auto mb-10">
           <Image
-            src="/watch.jpg" // Using the image from /public
+            src="/watch.jpg" 
             alt="Blog Placeholder Image"
             layout="responsive" // Use responsive layout for better fitting
             width={800} // Set a reasonable width
