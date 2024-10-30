@@ -1,7 +1,7 @@
 ## Portfolio
 ![Portfolio Screenshot](./public/snap.png)
 
-This portfolio showcases my journey as a software developer, including projects, skills, and experiences. Built with Next.js, Prismic CMS, and GSAP for animations, it highlights my ability to combine clean design with dynamic interactions.
+This portfolio is built with Next.js, Three.js and GSAP for animations, with content managed via Prismic CMS. 
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ These instructions will help you set up the project locally and understand how i
 
 ## Resources
 
-- [YouTube Tutorial - Create a Stunning Animated Portfolio Website with Next.js, Three.js, GSAP and Prismic](https://www.youtube.com/watch?v=rXDCAAkiC-s&list=PLUhSgROuR9jnxcmWYgT0TTTp34ARjrkfo&index=12): I followed this tutorial to set up the foundation of the project, and learned valuable techniques for building with Next.js, Three.js, GSAP and Prismic.
+- [YouTube Tutorial - Create a Stunning Animated Portfolio Website with Next.js, Three.js, GSAP and Prismic](https://www.youtube.com/watch?v=rXDCAAkiC-s&list=PLUhSgROuR9jnxcmWYgT0TTTp34ARjrkfo&index=12): I followed this tutorial to set up the foundation of the project, and for valuable learnings about Three.js, GSAP and Prismic.
 
 
 
