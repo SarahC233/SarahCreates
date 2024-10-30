@@ -25,7 +25,7 @@ These instructions will help you set up the project locally and understand how i
 
 ## Resources
 
-- [YouTube Tutorial - Create a Stunning Animated Poprtfolio Website with Next.js, Three.js, GSAP and Prismic]([https://www.youtube.com/watch?v=rXDCAAkiC-s&list=PLUhSgROuR9jnxcmWYgT0TTTp34ARjrkfo&index=12]): I followed this tutorial to set up the foundation of the project, and learned valuable techniques for building with Next.js, Three.js, GSAP and Prismic.
+- [YouTube Tutorial - Create a Stunning Animated Portfolio Website with Next.js, Three.js, GSAP and Prismic](https://www.youtube.com/watch?v=rXDCAAkiC-s&list=PLUhSgROuR9jnxcmWYgT0TTTp34ARjrkfo&index=12): I followed this tutorial to set up the foundation of the project, and learned valuable techniques for building with Next.js, Three.js, GSAP and Prismic.
 
 
 
