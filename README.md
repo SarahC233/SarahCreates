@@ -20,9 +20,9 @@ These instructions will help you set up the project locally and understand how i
 4. **Start the project (npm run dev)**
 
 ## Features
-- **Custom animations with GSAP & Three.js: I used GSAP for animations, adding interactive transitions and hover effects.**
-- **Prismic CMS Integration: Content is managed using Prismic - separated from the codebase.**
-- **Responsive Design: The layout adjusts to variuos screen sizes, ensuring a smooth exerince on desktops, tablets, and mobile devices.**
+- **Custom animations with GSAP & Three.js** - I used GSAP for animations, adding interactive transitions and hover effects.
+- **Prismic CMS Integration** - Content is managed using Prismic - separated from the codebase.
+- **Responsive Design** - The layout adjusts to variuos screen sizes, ensuring a smooth exerince on desktops, tablets, and mobile devices.
 
 ## Resources
 
