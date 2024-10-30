@@ -1,4 +1,5 @@
 ## Portfolio
+![Portfolio Screenshot](./public/snap.png)
 
 This portfolio showcases my journey as a software developer, including projects, skills, and experiences. Built with Next.js, Prismic CMS, and GSAP for animations, it highlights my ability to combine clean design with dynamic interactions.
 
